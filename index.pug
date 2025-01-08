@@ -6,6 +6,7 @@ html(lang="en")
     title Dashboard
     link(href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet")
     link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet")
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
 
   body(class="dark:bg-gray-800 dark:text-white")
     //- Main container - real
@@ -170,8 +171,7 @@ html(lang="en")
               button(class="w-9 h-9 rounded-full focus:outline-none "
     onclick="toggleDropdown(event)")
                 img(class="w-9 h-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar")
-              div(id="dropdown-menu"
-    class="absolute right-0 p-2 mt-2 w-48 bg-white rounded-lg shadow-lg hidden")
+              div(id="dropdown-menu" class="absolute right-0 p-2 mt-2 w-48 bg-white z-20 rounded-lg shadow-lg hidden")
                 ul(class="py-1 text-gray-700")
                   li
                     a( class="block px-4 py-1 hover:bg-gray-200 rounded-lg") Signed in as zoey@example.com
@@ -335,6 +335,12 @@ html(lang="en")
                         span( class="font-semibold text-danger text-xs") ⭐
                         span( class="text-xs text-black") 125
                       span( class="text-black text-xs") VIP
+            //-stat        
+            div(class="w-full h-[500px] mx-auto p-4 bg-gray-50 shadow-md rounded-lg mt-8")
+              h1(class="text-xl font-semibold mb-4") Statistics
+              canvas#myChart(w="400" h="600")
+
+
           //-right
           div(class="col-span-3")
             p(class="text-xl font-semibold text-gray-800") Section
@@ -408,9 +414,6 @@ html(lang="en")
                           class="absolute top-1 left-1/3 font-normal text-center"    
                           ) +1
      
-   
- 
-
 
 
 
@@ -445,9 +448,93 @@ script.
     
     if (savedTheme === 'dark') {
       document.documentElement.classList.add('dark');
-      checkbox.checked = true; // Ensure the toggle button is in the correct state
+      checkbox.checked = true; 
     } else {
       document.documentElement.classList.remove('dark');
-      checkbox.checked = false; // Ensure the toggle button is in the correct state
+      checkbox.checked = false; 
     }
   });
+
+ //- chart
+      const ctx = document.getElementById('myChart').getContext('2d');
+
+      // Gradient for Series1
+      const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient1.addColorStop(0, 'rgba(59, 130, 246, 0.5)'); 
+      gradient1.addColorStop(1, 'rgba(59, 130, 246, 0.1)'); 
+
+      // Gradient for Series2
+      const gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient2.addColorStop(0, 'rgba(16, 185, 129, 0.5)');
+      gradient2.addColorStop(1, 'rgba(16, 185, 129, 0.1)'); 
+
+      // Chart Configuration
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997'],
+          datasets: [
+            {
+              label: 'Series1',
+              data: [30, 40, 25, 45, 40, 110, 100],
+              borderColor: '#3b82f6', 
+              backgroundColor: gradient1,
+              fill: true,
+              tension: 0.4, 
+              borderWidth: 3, 
+              pointRadius: 0, 
+            },
+            {
+              label: 'Series2',
+              data: [40, 70, 70, 85, 75, 160, 140],
+              borderColor: '#10b981', 
+              backgroundColor: gradient2,
+              fill: true,
+              tension: 0.4, 
+              borderWidth: 3, 
+              pointRadius: 0, 
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                usePointStyle: true, 
+                padding: 15,
+              },
+            },
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false, 
+              },
+              ticks: {
+                display: true, 
+              },
+              title: {
+                display: false, 
+              },
+            },
+            y: {
+              grid: {
+                display: true, 
+              },
+              ticks: {
+                stepSize: 40, 
+                callback: function(value) {
+                  return value; 
+                },
+              },
+              title: {
+                display: false, 
+              },
+              beginAtZero: true,
+            },
+          },
+        },
+      });
