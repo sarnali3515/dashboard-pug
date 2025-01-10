@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .scrollbar {
-  scrollbar-color: gray transparent;
+  scrollbar-color: lightgray transparent;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -20,12 +20,14 @@
 }
 
 /* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .scrollbar::-webkit-scrollbar-thumb {
-    background-color: #4b5563;
-  }
 
-  .scrollbar::-webkit-scrollbar-track {
-    background-color: #1f2937;
-  }
+.dark .scrollbar {
+  scrollbar-color: darkgray transparent;
+}
+.dark .scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+}
+
+.dark .scrollbar::-webkit-scrollbar-track {
+  background-color: #1f2937;
 }
