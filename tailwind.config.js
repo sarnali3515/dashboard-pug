@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["./*.html", "./**/*.pug"],
+  content: ["./index.pug", "./index.html", "./demo.pug", "./demo.html"],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Inter", "sans-serif"],
+      colors: {
+        darkCustom: "rgb(24, 24, 27)",
+        darkSecondary: "rgb(44, 49, 55)",
       },
     },
   },
