@@ -7,14 +7,15 @@ html(lang="en" data-theme="light" class="dark")
     link(href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet")
 
     link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet")
     link( rel="stylesheet" href="output.css")
     script(src="https://cdn.jsdelivr.net/npm/chart.js")
 
-  body(class="bg-white dark:bg-black dark:text-white")
+  body(class="bg-white dark:bg-black dark:text-white font-inter")
     //- Main container - real
-    div(class="flex min-h-screen")
+    div(class="flex min-h-screen scrollbar")
       //- Sidebar
-      div(id="sidebar" class="w-64 text-gray-800 dark:text-white p-4 h-screen overflow-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600  scrollbar-track-gray-200 dark:scrollbar-track-gray-400 border border-r-2 hidden md:block")
+      div(id="sidebar" class="w-64 text-gray-800 dark:text-white p-4 h-screen overflow-auto 0 border-r-2 dark:border-black hidden md:block scrollbar")
         //- acme 
         div(class="relative group")
           button(class="flex gap-2 items-center relative md:pl-3 md:pt-2" onclick="toggleSidebarDropdown(event)")
@@ -24,7 +25,7 @@ html(lang="en" data-theme="light" class="dark")
             viewBox="0 0 56 56"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="w-11 h-11 border rounded"
+            class="w-11 h-11 border dark:border-darkCustom rounded"
             
             )
               rect(
@@ -75,7 +76,7 @@ html(lang="en" data-theme="light" class="dark")
                 viewBox="0 0 56 56"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-9 h-9 border rounded dark:bg-black"
+                class="w-9 h-9 border dark:border-darkSecondary rounded dark:bg-black"
 
                 )
                   rect(
@@ -105,7 +106,7 @@ html(lang="en" data-theme="light" class="dark")
                 viewBox="0 0 56 56"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-9 h-9 border rounded dark:bg-black"
+                class="w-9 h-9 border dark:border-darkSecondary rounded dark:bg-black"
 
                 )
                   rect(
@@ -135,7 +136,7 @@ html(lang="en" data-theme="light" class="dark")
                 viewBox="0 0 56 56"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-9 h-9 border rounded dark:bg-black"
+                class="w-9 h-9 border dark:border-darkSecondary rounded dark:bg-black"
 
                 )
                   rect(
@@ -165,7 +166,7 @@ html(lang="en" data-theme="light" class="dark")
                 viewBox="0 0 56 56"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-9 h-9 border rounded dark:bg-black"
+                class="w-9 h-9 border dark:border-darkSecondary rounded dark:bg-black"
 
                 )
                   rect(
@@ -370,11 +371,11 @@ html(lang="en" data-theme="light" class="dark")
                     a( class="block px-4 py-1 hover:bg-gray-200 dark:hover:bg-darkSecondary rounded-lg") Help and Feedback
                   li
                     a( class="block px-4 py-1 text-red-600 hover:bg-red-600 hover:text-white rounded-lg") Log Out
-                  li(class="hover:bg-gray-300 dark:hover:bg-darkSecondary  rounded-lg")
+                  li(class="hover:bg-gray-300 px-4 py-1 dark:hover:bg-darkSecondary  rounded-lg")
                     label(class="relative inline-flex items-center cursor-pointer")
-                      input(type="checkbox", class="sr-only peer")
-                      span(class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-300")
-                        span(class="absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-5")
+                      input(type="checkbox", class="sr-only peer" onchange="toggleTheme()" id="theme-toggle")
+                      span(class="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 transition-colors duration-300")
+                        span(class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform peer-checked:translate-x-5")
         
 
 
@@ -1344,10 +1345,7 @@ html(lang="en" data-theme="light" class="dark")
                               path(d="M7.91669 10.4167H12.0834" stroke="#FF0080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
                           span(class="absolute left-1/2 transform -translate-x-1/2 -translate-y-full bg-red-600 text-white text-sm rounded-2xl px-3 py-1 opacity-0 whitespace-nowrap group-hover:opacity-100 border") Delete User
                   
-          label(class="relative inline-flex items-center cursor-pointer")
-                      input(type="checkbox", class="sr-only peer" onchange="toggleTheme()" id="theme-toggle")
-                      span(class="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 transition-colors duration-300")
-                        span(class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform peer-checked:translate-x-5")
+          
 
 
 //-script

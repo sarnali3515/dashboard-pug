@@ -8,6 +8,9 @@ module.exports = {
         darkCustom: "rgb(24, 24, 27)",
         darkSecondary: "rgb(44, 49, 55)",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
