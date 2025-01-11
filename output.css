@@ -1485,11 +1485,6 @@ video {
   background-color: rgb(44 49 55 / var(--tw-bg-opacity, 1));
 }
 
-.dark\:bg-gray-800:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
-}
-
 .dark\:fill-white:is(.dark *) {
   fill: #fff;
 }
